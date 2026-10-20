@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Un regalo para Mishel</title><link rel="stylesheet" href="css/styles.css"></head><body>
+<canvas id="petalos" aria-hidden="true"></canvas>
+<main>
+<section class="scene card" id="s-gate"><p class="k">UNA PEQUEÑA SORPRESA</p><h1 id="nombre"></h1><p class="sub" id="frase"></p><p id="dedic" class="peq"></p>
+ <div class="gate-divider" aria-hidden="true"><span>♥</span></div><p class="gate-prompt">Nuestra clave secreta abre tu regalo</p>
+ <form id="form-gate"><label for="clave">Contraseña</label><input id="clave" type="password" autocomplete="off" required><button type="submit" class="rojo">Abrir mi regalo <span aria-hidden="true">→</span></button></form>
+ <p id="gate-msg" role="alert"></p><p class="peq" id="pista"></p></section>
+<section class="scene" id="s-intro"><div class="intro-copy"><p class="intro-k">UN REGALO HECHO CON AMOR</p><div id="marca" class="marca"></div><p class="intro-note">Feliz cumpleaños, Mishel</p></div><button id="saltar" class="saltar">Saltar <span aria-hidden="true">→</span></button></section>
+<section class="scene" id="s-perfiles"><div class="perfil-intro"><p class="k">EDICIÓN DE CUMPLEAÑOS · 19</p><h1>Este universo es tuyo</h1><p>Una historia bonita merece su propio lugar.</p></div><button id="perfil" class="perfil" aria-label="Entrar al espacio de Mishel"><span class="av" aria-hidden="true"><span class="av-initial">M</span><span class="av-star">✦</span></span><span id="perfil-n"></span><span class="perfil-action">Entrar a mi regalo <span aria-hidden="true">→</span></span></button><p class="perfil-note">Hecho especialmente para ti, con todo mi amor.</p></section>
+<section class="scene" id="s-app">
+ <header id="top"><div class="brand"><button id="secreto" class="brand-symbol" aria-label="Descubrir mensaje secreto" title="Hay una sorpresa">♥</button><span class="brand-copy"><span class="logo" id="logo"></span><small>UNA HISTORIA NUESTRA</small></span></div>
+  <nav id="menu" aria-label="Secciones"><button data-v="inicio">Inicio</button><button data-v="lugares">Lugares</button><button data-v="linea">Historia</button><button data-v="cartas">Cartas</button><button data-v="sorpresas">Sorpresas</button><button data-v="juegos">Juegos</button><button data-v="regalos">Regalos</button><button data-v="fotos">Fotos</button><button data-v="audio">Audio</button><button data-v="diario">Diario</button><button data-v="despedida">Despedida</button></nav></header>
+ <div class="vista" id="v-inicio" hidden>
+  <div class="hero" id="hero"><div class="hero-in"><p class="k" id="hero-k"></p><h1 id="hero-t"></h1><p id="hero-p"></p>
+  <div class="hero-actions"><button id="h-play" class="blanco"><span aria-hidden="true">♥</span> Ver mi mensaje</button><button id="h-info" class="gris"><span aria-hidden="true">✦</span> Nuestra historia</button></div></div>
+   <span class="flor f1" aria-hidden="true">🌸</span><span class="flor f2" aria-hidden="true">🌷</span><span class="flor f3" aria-hidden="true">🌺</span></div>
+  <div id="filas"></div></div>
+ <div class="vista pag" id="v-lugares" hidden><h2>Nuestros lugares</h2><div id="g-lugares" class="grid"></div></div>
+ <div class="vista pag" id="v-linea" hidden><h2>Línea del tiempo</h2><ol id="l-linea" class="linea"></ol></div>
+ <div class="vista pag" id="v-cartas" hidden><h2>Cartas</h2><div id="g-cartas" class="grid"></div></div>
+ <div class="vista pag" id="v-sorpresas" hidden>
+  <p class="k">PEQUEÑOS RECORDATORIOS</p><h2>19 razones para quererte</h2>
+  <section class="razon-panel" aria-live="polite"><p class="razon-index"><span id="razon-num">01</span><span> / 19</span></p><p id="razon-text"></p><progress id="razon-progreso" max="19" value="1" aria-label="Progreso de las razones"></progress>
+   <div class="razon-actions"><button id="razon-prev" aria-label="Razón anterior">←</button><button id="razon-next" class="rojo">Siguiente <span aria-hidden="true">→</span></button></div></section>
+  <h2 class="sorpresa-subtitulo">Abre cuando…</h2><div id="abre-cuando" class="grid"></div>
+  <h2 class="sorpresa-subtitulo">Pide un deseo</h2><section class="vela-panel"><div class="vela" aria-hidden="true"><span class="llama"></span><span class="mecha"></span></div><div>  <p id="vela-mensaje">Deseo que siempre disfrutes de los momentos de la vida. ¡Feliz cumpleaños, mi amor!</p><button id="vela-soplar" class="rojo">Soplar la vela</button></div></section>
+ </div>
+ <div class="vista pag" id="v-fotos" hidden><p class="k">RECUERDOS SOLO DE USTEDES</p><h2>Nuestras fotos y videos</h2><p class="suave">Estos recuerdos forman parte del sitio. Las fotos que agregues aquí solo se guardan en este dispositivo.</p>
+  <label class="upload-button rojo" for="fotos-archivos">Añadir fotos <span aria-hidden="true">＋</span></label><input class="visually-hidden" id="fotos-archivos" type="file" accept="image/*" multiple><p id="fotos-estado" role="status"></p><div id="fotos-grid" class="photo-grid"></div></div>
+ <div class="vista pag" id="v-audio" hidden><p class="k">TU VOZ, PARA GUARDARLA</p><h2>Un mensaje para escuchar</h2><p class="suave">Graba un mensaje aquí o elige uno. Se guarda solo en este dispositivo.</p>
+  <div class="audio-panel"><div class="audio-actions"><button id="voz-grabar" class="rojo">Grabar mensaje <span aria-hidden="true">●</span></button><button id="voz-detener" hidden>Detener</button><label class="upload-button gris" for="voz-archivo">Elegir audio</label><input class="visually-hidden" id="voz-archivo" type="file" accept="audio/*"></div>
+  <p id="voz-estado" role="status">Puedes grabar o elegir un archivo de audio.</p><audio id="voz-player" controls hidden></audio><button id="voz-descargar" class="gris" hidden>Descargar grabación</button><button id="voz-borrar" class="gris" hidden>Borrar mensaje</button></div></div>
+ <div class="vista pag" id="v-juegos" hidden><p class="k">JUGUEMOS UN RATITO</p><h2>Un recuerdo por descubrir</h2>
+  <section class="game-surface"><h3>Arma la foto</h3><p class="suave">Desliza las piezas hasta reconstruir la imagen.</p><div id="rompecabezas" class="puzzle-grid" aria-label="Rompecabezas deslizante"></div><div class="game-actions"><button id="puzzle-mezclar" class="gris">Mezclar de nuevo</button><p id="puzzle-estado" role="status"></p></div></section>
+  <section class="game-surface historia-game"><p class="k">ELIGE TU CAMINO</p><h3 id="historia-titulo"></h3><p id="historia-texto"></p><div id="historia-opciones" class="story-options"></div><button id="historia-reiniciar" class="gris" hidden>Volver a empezar</button></section>
+ </div>
+ <div class="vista pag" id="v-regalos" hidden><p class="k">HECHO PENSANDO EN TI</p><h2>Regalitos para ti</h2>
+  <section class="gift-section"><h3>Un ramo virtual</h3><p class="suave">Elige una flor y su color; voy armando el ramo para ti.</p><div class="bouquet-controls"><label for="ramo-tipo">Flor</label><select id="ramo-tipo"><option value="lirio">Lirio</option><option value="rosa">Rosa</option><option value="tulipan">Tulipán</option><option value="margarita">Margarita</option></select><label for="ramo-color">Color</label><input id="ramo-color" type="color" value="#f2dce5" aria-label="Color de las flores"><button id="ramo-agregar" class="rojo">Añadir flor</button><button id="ramo-descargar" class="gris">Descargar ramo</button></div><div id="ramo-preview" class="bouquet-preview" aria-live="polite"></div><label for="ramo-dedicatoria">Dedicatoria</label><input id="ramo-dedicatoria" type="text" value="Para la persona más bonita de mi vida" maxlength="90"></section>
+  <section class="gift-section"><h3>Una tarjeta para tu cumpleaños</h3><p class="suave">Escribe una dedicatoria y descarga una tarjeta para guardar.</p><label for="tarjeta-texto">Dedicatoria</label><textarea id="tarjeta-texto" rows="3">Deseo que siempre disfrutes de los momentos de la vida. ¡Feliz cumpleaños, mi amor!</textarea><button id="tarjeta-cumple-descargar" class="rojo">Descargar tarjeta</button></section>
+  <section class="gift-section thanks-page"><p class="k">UNA ÚLTIMA COSITA</p><h3>Gracias por existir</h3><div id="agradecimiento"></div></section>
+ </div>
+ <div class="vista pag" id="v-despedida" hidden><p class="k">UNAS PALABRAS SINCERAS</p><h2>Mi despedida</h2>
+  <section class="gift-section farewell-section"><p class="suave">Perdóname por lo que te haya lastimado. Todo lo que hice por ti lo hice con amor. Te amaré toda la vida y guardaré con cariño los momentos que compartimos.</p><h3>Un último video</h3><p class="suave">Este video es parte de mi despedida. Para verlo, escribe la contraseña.</p><form id="despedida-form"><label for="despedida-clave">Contraseña</label><input id="despedida-clave" type="password" autocomplete="off" required><button class="rojo" type="submit">Ver el video</button></form><p id="despedida-estado" role="status" aria-live="polite"></p><div id="despedida-reproductor"></div></section>
+ </div>
+ <div class="vista pag" id="v-diario" hidden><h2>Mi diario</h2>
+  <p class="suave">Lo que escribas se guarda solo en este navegador y dispositivo. No se envía a ningún servidor ni se sincroniza; puede perderse si borras los datos del sitio.</p>
+  <label for="diario-ta">Tus reflexiones</label><textarea id="diario-ta" rows="9"></textarea>
+  <div><button id="d-guardar" class="rojo">Guardar</button><button id="d-txt" class="gris">Exportar TXT</button><button id="d-borrar" class="gris">Borrar</button></div><p id="d-msg" role="status"></p></div>
+</section>
+<section class="scene card" id="s-epilogo"><p class="k">Epílogo</p><h1 id="epi-t"></h1><p id="epi-p"></p><button id="tarjeta" class="rojo">Descargar tarjeta de recuerdo</button></section>
+</main>
+<div id="audio-ui" hidden><button id="a-btn" aria-pressed="false">♪ Música</button><input id="a-vol" type="range" min="0" max="1" step="0.05" value="0.5" aria-label="Volumen"><span id="a-estado"></span></div>
+<dialog id="modal" aria-label="Detalle"><div id="modal-c"></div></dialog>
+<audio id="audio" preload="none"></audio>
+<script type="module" src="js/main.js"></script></body></html>
